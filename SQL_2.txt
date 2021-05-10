@@ -1,0 +1,17 @@
+-- Ý 1
+CREATE VIEW DP_QH AS
+SELECT Duong_Pho.DuongID AS MaDuong ,Duong_Pho.TenDuong AS TenDuong, Quan_Huyen.TenQH AS QuanHuyen
+FROM Duong_Pho INNER JOIN Quan_Huyen ON Duong_Pho.MaQH=Quan_Huyen.MaQH
+WhERE Duong_Pho.DuongID IN(1,2,3)
+
+
+-- Ý 2
+CREATE FUNCTION FUN() 
+RETURNS TABLE 
+AS
+RETURN (SELECT * FROM DP_QH)
+
+-- Ý 3
+CREATE PROC PRO
+AS
+SELECT * FROM FUN()
